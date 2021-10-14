@@ -1,0 +1,14 @@
+{
+    "name": "Chat",
+    "version": "0.1.0",
+    "dependencies": {
+        "express": "4.0.0",
+        "express-generator": "^4.13.1",
+        "socket.io": "1.2.1",
+        "body-parser": "^1.9.0",
+        "swaggerize-express": "^4.0.0",
+        "swaggerize-ui": "1.0.1"
+    },
+    "author": "user",
+    "description": "Digital Engagement Chat Server"
+}
