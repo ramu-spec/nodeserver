@@ -1,0 +1,149 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "v1",
+		"title": "Chat",
+		"description": "Chat App buildind using node.js"
+	},
+	"basePath": "/",
+	"schemes": [
+		"http"
+	],
+	"consumes": [
+		"application/json"
+	],
+	"produces": [
+		"application/json"
+	],
+	"paths": {
+		"/Message": {
+			"get": {
+				"description": "Returns all Messages",
+				"operationId": "getMessage",
+				"parameters": [{
+					"name": "tags",
+					"in": "query",
+					"description": "tags to filter by",
+					"required": false,
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"collectionFormat": "csv"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "maximum number of results to return",
+					"required": false,
+					"type": "integer",
+					"format": "int32"
+				}],
+				"responses": {
+					"200": {
+						"description": "success"
+					},
+					"default": {
+						"description": "unexpected error",
+						"schema": {
+							"$ref": "#/definitions/Error"
+						}
+					}
+				}
+			},
+			"post": {
+				"description": "Post Chat Message",
+				"operationId": "postMessage",
+				"parameters": [{
+					"name": "Message",
+					"in": "body",
+					"description": "chat message",
+					"required": false
+					
+
+				}],
+				"responses": {
+					"200": {
+						"description": "chat response success"
+
+					},
+					"default": {
+						"description": "Error response",
+						"schema": {
+							"$ref": "#/definitions/Error"
+						}
+					}
+				}
+			}
+		}
+	},
+"definitions": {
+"Message": {
+"type": "object",
+"properties": {
+				"content_type": {"type": "number"},
+				"device_id": {"type": "number"},
+				"device_type": {"type": "number"},
+				"event_end_date": {
+					"type": "string",
+					"format": "date"
+				},
+				"event_start_date": {
+					"type": "string",
+					"format": "date"
+				},
+				"event_status": {"type": "string"},
+				"event_type": {"type": "string"},
+				"from": {"type": "string"},
+				"message": {"type": "string"},
+				"content": {"type": "array"},
+				"to": { "type": "array" },
+				"topic": {"type": "string"},
+				"topic_context": {"type": "string"}
+			}
+},	
+"to": {
+	"type": "array",
+	"properties": {
+				"user_type": {
+					"type": "number"
+				},
+				"userid": {
+					"type": "number"
+				},
+				"channel": {
+					"type": "number"
+				},
+				"message_status": {
+					"type": "number"
+				}
+			}
+},
+	
+"content": {
+		"type": "array",
+			"properties": {
+				"attachment_type": {
+					"type": "number"
+				},
+				"attachment_title": {
+					"type": "number"
+				},
+				"attachment_key": {
+					"type": "number"
+				}
+			}
+},
+"Error": {
+		"type": "object",
+		"properties": {
+		"code": {
+				   "type": "integer",
+					"format": "int32"
+				},
+				"message": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
